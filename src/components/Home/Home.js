@@ -6,7 +6,7 @@ import register_icon from "./register-icon.png";
 
 const Home = () => {
   return (
-    <div className="d-flex align-items-center">
+    <div className="d-flex justify-content-center align-items-center h-100">
       <div className="text-center">
         <h1 className="animated fadeInLeft slower text-nowrap">
           Anime

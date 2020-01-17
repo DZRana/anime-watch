@@ -11,8 +11,8 @@ toast.configure({
 class Signin extends Component {
   render() {
     return (
-      <div className="d-flex align-items-center">
-        <div className="card">
+      <div className="d-flex justify-content-center align-items-center h-100">
+        <div className="card animated fadeInRight slow">
           <img className="card-img-top" alt="signin-gif" src={signin_gif} />
           <div className="card-body">
             <form className="text-center">

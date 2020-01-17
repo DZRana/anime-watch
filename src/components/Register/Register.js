@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Register.scss";
 import register_gif from "./register-gif.gif";
-import Explore from "../Explore/Explore";
 
 toast.configure({
   autoClose: 3000
@@ -12,8 +11,8 @@ toast.configure({
 class Register extends Component {
   render() {
     return (
-      <div className="d-flex align-items-center">
-        <div className="card">
+      <div className="d-flex justify-content-center align-items-center h-100">
+        <div className="card animated fadeInRight slow">
           <img className="card-img-top" alt="register-gif" src={register_gif} />
           <div className="card-body">
             <form className="text-center">

@@ -1,0 +1,15 @@
+a,
+a:link,
+a:visited,
+a:active {
+  opacity: 0.6;
+  transition-property: opacity;
+  transition-duration: 1s;
+  color: white;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 1;
+}
