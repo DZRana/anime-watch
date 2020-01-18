@@ -1,19 +1,39 @@
-a,
-a:link,
-a:visited,
-a:active {
-  opacity: 0.6;
-  transition-property: opacity;
-  transition-duration: 1s;
-  color: white;
-  font-size: 25px;
-  text-decoration: none;
-}
+.topnav {
+  margin-top: 3vh;
+  a,
+  a:link,
+  a:visited,
+  a:active {
+    opacity: 0.6;
+    transition-property: opacity;
+    transition-duration: 1s;
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+  }
 
-a:hover {
-  opacity: 1;
+  a:hover {
+    opacity: 1;
+  }
 }
-
 .searchbar {
-  margin-top: 75px;
+  margin-top: 8vh;
+}
+
+.carousel {
+  margin-top: 5vh;
+  a,
+  a:link,
+  a:visited,
+  a:active {
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 1s;
+    color: white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    opacity: 0.6;
+  }
 }

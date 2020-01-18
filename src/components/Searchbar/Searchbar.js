@@ -7,7 +7,7 @@ const Searchbar = ({ onSearchChange }) => {
       <input
         className="search__input"
         type="text"
-        placeholder="Search (minimum of 3 letters)"
+        placeholder="Search (min 3 letters)"
         onKeyDown={onSearchChange}
       />
     </div>

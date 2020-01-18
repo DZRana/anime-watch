@@ -1,0 +1,12 @@
+.slider {
+  width: 99vw;
+}
+
+.slick-slide {
+  transition: all 0.3s ease-in-out;
+  height: 65vh;
+}
+
+.slick-slide:hover {
+  transform: scale(0.95);
+}
