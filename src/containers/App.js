@@ -10,17 +10,20 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      searchResults: []
+      searchResults: [],
+      loadingSearchResults: false
     };
   }
 
   callAPI = async event => {
+    this.setState({ loadingSearchResults: true });
     try {
       const res = await jikanjs.search("anime", event.target.value);
       this.setState({ searchResults: res.results });
     } catch (err) {
       console.log(err);
     }
+    this.setState({ loadingSearchResults: false });
   };
 
   onSearchChange = event => {
@@ -30,7 +33,7 @@ class App extends Component {
   };
 
   render() {
-    const { searchResults } = this.state;
+    const { searchResults, loadingSearchResults } = this.state;
     return (
       <div className="container-fluid">
         {/*<Home />*/}
@@ -38,8 +41,8 @@ class App extends Component {
         {/*<Register />*/}
         <Explore
           onSearchChange={this.onSearchChange}
-          callAPI={this.callAPI}
           searchResults={searchResults}
+          loadingSearchResults={loadingSearchResults}
         />
       </div>
     );

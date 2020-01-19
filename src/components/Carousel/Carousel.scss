@@ -1,7 +1,3 @@
-.slider {
-  width: 99vw;
-}
-
 .slick-slide {
   transition: all 0.3s ease-in-out;
   height: 65vh;
@@ -9,4 +5,22 @@
 
 .slick-slide:hover {
   transform: scale(0.95);
+}
+
+.carousel {
+  margin-top: 5vh;
+  a,
+  a:link,
+  a:visited,
+  a:active {
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 1s;
+    color: white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    opacity: 0.6;
+  }
 }

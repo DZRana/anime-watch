@@ -3,7 +3,7 @@ import "./Searchbar.scss";
 
 const Searchbar = ({ onSearchChange }) => {
   return (
-    <div>
+    <div className="searchbar d-flex justify-content-center animated fadeInUp slow delay-1s">
       <input
         className="search__input"
         type="text"

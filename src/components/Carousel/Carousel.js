@@ -52,9 +52,8 @@ const Carousel = ({ searchResults }) => {
       }
     ]
   };
-
   return (
-    <Slider className="slider" {...settings}>
+    <Slider className="carousel" {...settings}>
       {searchResults.map((anime, i) => {
         return (
           <div className="animated fadeInRight slow card">

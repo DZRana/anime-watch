@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./Explore.scss";
 import Searchbar from "../Searchbar/Searchbar";
-import Carousel from "../Carousel/Carousel";
+import Topnav from "../Topnav/Topnav";
+import Results from "../Results/Results";
 
 class Explore extends Component {
   constructor(props) {
@@ -10,23 +11,15 @@ class Explore extends Component {
   }
 
   render() {
-    const { onSearchChange, searchResults } = this.props;
+    const { onSearchChange, searchResults, loadingSearchResults } = this.props;
     return (
       <div>
-        <div className="topnav row text-center text-nowrap animated fadeInUp slow">
-          <div className="col">
-            <a href="javascript:void(0);">Explore</a>
-          </div>
-          <div className="col">
-            <a href="javascript:void(0);">My Watchlist</a>
-          </div>
-        </div>
-        <div className="searchbar d-flex justify-content-center animated fadeInUp slow delay-1s">
-          <Searchbar onSearchChange={onSearchChange} />
-        </div>
-        <div className="carousel d-flex justify-content-center">
-          <Carousel searchResults={searchResults} />
-        </div>
+        <Topnav />
+        <Searchbar onSearchChange={onSearchChange} />
+        <Results
+          searchResults={searchResults}
+          loadingSearchResults={loadingSearchResults}
+        />
       </div>
     );
   }
