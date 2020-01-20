@@ -3,7 +3,7 @@ import "./Topnav.scss";
 
 const Topnav = () => {
   return (
-    <div className="topnav row text-center text-nowrap animated fadeInUp slow">
+    <div className="mt-4 topnav row text-center text-nowrap animated fadeInUp slow">
       <div className="col">
         <a href="javascript:void(0);">Explore</a>
       </div>

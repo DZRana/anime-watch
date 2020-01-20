@@ -1,18 +1,16 @@
 import React from "react";
 import Carousel from "../Carousel/Carousel";
+import "./Results.scss";
 
 const Results = ({ searchResults, loadingSearchResults }) => {
   return (
     <div>
-      {!loadingSearchResults && searchResults.length < 1 && <div></div>}
       {loadingSearchResults && (
-        <div className="d-flex justify-content-center align-items-center">
-          <div className="d-flex justify-content-center align-items-center animated flash infinite">
-            <p>LOADING</p>
-          </div>
+        <div className="loading text-center animated flash infinite">
+          <p>LOADING</p>
         </div>
       )}
-      {!loadingSearchResults && searchResults.length > 0 && (
+      {!loadingSearchResults && searchResults.length > 4 && (
         <Carousel searchResults={searchResults} />
       )}
     </div>
