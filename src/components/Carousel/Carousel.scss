@@ -1,10 +1,19 @@
 .slick-slide {
+  .card {
+    height: 65vh;
+  }
+
+  .card-img-top {
+    height: 350px;
+  }
+  .card-body {
+  }
   transition: all 0.3s ease-in-out;
   height: 65vh;
 }
 
 .slick-slide:hover {
-  transform: scale(0.95);
+  transform: scale(0.97);
 }
 
 .carousel {

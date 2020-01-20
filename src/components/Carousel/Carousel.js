@@ -69,7 +69,9 @@ const Carousel = ({ searchResults }) => {
                 </a>
               </h5>
               <p className="card-text">{searchResults[i].synopsis}</p>
-              <button className="btn btn-primary">Go somewhere</button>
+              <div className="text-center">
+                <button className="btn btn-primary">Go somewhere</button>
+              </div>
             </div>
           </div>
         );

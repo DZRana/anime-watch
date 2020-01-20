@@ -37,7 +37,7 @@ class App extends Component {
     return (
       <div className="container-fluid">
         {/*<Home />*/}
-        {/*<Signin />*/}
+        {/*<Signin />
         {/*<Register />*/}
         <Explore
           onSearchChange={this.onSearchChange}
