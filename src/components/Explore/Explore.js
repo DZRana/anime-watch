@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Explore.scss";
 import Searchbar from "../Searchbar/Searchbar";
-import Topnav from "../Topnav/Topnav";
 import Results from "../Results/Results";
 
 class Explore extends Component {
@@ -14,7 +13,6 @@ class Explore extends Component {
     const { onSearchChange, searchResults, loadingSearchResults } = this.props;
     return (
       <div>
-        <Topnav />
         <Searchbar onSearchChange={onSearchChange} />
         <Results
           searchResults={searchResults}

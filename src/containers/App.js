@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./App.scss";
+import Topnav from "../components/Topnav/Topnav";
 import Home from "../components/Home/Home";
 import Signin from "../components/Signin/Signin";
 import Register from "../components/Register/Register";
 import Explore from "../components/Explore/Explore";
+import Watchlist from "../components/Watchlist/Watchlist";
 import jikanjs from "jikanjs";
 
 class App extends Component {
@@ -39,11 +41,13 @@ class App extends Component {
         {/*<Home />*/}
         {/*<Signin />
         {/*<Register />*/}
-        <Explore
+        <Topnav />
+        {/*<Explore
           onSearchChange={this.onSearchChange}
           searchResults={searchResults}
           loadingSearchResults={loadingSearchResults}
-        />
+        />*/}
+        <Watchlist />
       </div>
     );
   }
