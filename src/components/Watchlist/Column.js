@@ -5,14 +5,18 @@ import { Droppable } from "react-beautiful-dnd";
 
 const Column = ({ column, tasks }) => {
   return (
-    <div className="colTest">
+    <div className="colTest col d-flex flex-column ">
       <h3 className="titleTest">{column.title}</h3>
       <Droppable droppableId={column.id}>
-        {provided => (
+        {(provided, snapshot) => (
           <div
-            className="taskListTest"
+            className="taskListTest flex-grow-1"
             {...provided.droppableProps}
             ref={provided.innerRef}
+            style={{
+              backgroundColor: snapshot.isDraggingOver ? "teal" : "transparent",
+              ...provided.droppableProps.style
+            }}
           >
             {tasks.map((task, index) => (
               <Task key={task.id} task={task} index={index} />
