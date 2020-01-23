@@ -1,6 +1,6 @@
 import React from "react";
 import "./Column.scss";
-import Task from "./Task";
+import Task from "../Task/Task";
 import { Droppable } from "react-beautiful-dnd";
 
 const Column = ({ column, animes }) => {
@@ -14,7 +14,14 @@ const Column = ({ column, animes }) => {
             {...provided.droppableProps}
             ref={provided.innerRef}
             style={{
-              backgroundColor: snapshot.isDraggingOver ? "teal" : "transparent",
+              backgroundColor:
+                snapshot.isDraggingOver && column.id === "c1"
+                  ? "teal"
+                  : "transparent" &&
+                    snapshot.isDraggingOver &&
+                    column.id === "c2"
+                  ? "#990000"
+                  : "transparent",
               ...provided.droppableProps.style
             }}
           >

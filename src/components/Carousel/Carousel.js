@@ -56,7 +56,10 @@ const Carousel = ({ searchResults, onWatchlistAdd }) => {
     <Slider className="mt-5 carousel" {...settings}>
       {searchResults.map((anime, i) => {
         return (
-          <div className="animated fadeInRight slow card">
+          <div
+            className="animated fadeInRight slow card"
+            key={searchResults[i].mal_id}
+          >
             <img
               src={searchResults[i].image_url}
               className="card-img-top"
