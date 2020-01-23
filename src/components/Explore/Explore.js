@@ -10,13 +10,19 @@ class Explore extends Component {
   }
 
   render() {
-    const { onSearchChange, searchResults, loadingSearchResults } = this.props;
+    const {
+      onSearchChange,
+      searchResults,
+      loadingSearchResults,
+      onWatchlistAdd
+    } = this.props;
     return (
       <div>
         <Searchbar onSearchChange={onSearchChange} />
         <Results
           searchResults={searchResults}
           loadingSearchResults={loadingSearchResults}
+          onWatchlistAdd={onWatchlistAdd}
         />
       </div>
     );

@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "../Carousel/Carousel";
 import "./Results.scss";
 
-const Results = ({ searchResults, loadingSearchResults }) => {
+const Results = ({ searchResults, loadingSearchResults, onWatchlistAdd }) => {
   return (
     <div>
       {loadingSearchResults && (
@@ -11,7 +11,10 @@ const Results = ({ searchResults, loadingSearchResults }) => {
         </div>
       )}
       {!loadingSearchResults && searchResults.length > 4 && (
-        <Carousel searchResults={searchResults} />
+        <Carousel
+          searchResults={searchResults}
+          onWatchlistAdd={onWatchlistAdd}
+        />
       )}
     </div>
   );

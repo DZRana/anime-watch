@@ -3,7 +3,7 @@ import "./Column.scss";
 import Task from "./Task";
 import { Droppable } from "react-beautiful-dnd";
 
-const Column = ({ column, tasks }) => {
+const Column = ({ column, animes }) => {
   return (
     <div className="colTest col d-flex flex-column ">
       <h3 className="titleTest">{column.title}</h3>
@@ -18,8 +18,8 @@ const Column = ({ column, tasks }) => {
               ...provided.droppableProps.style
             }}
           >
-            {tasks.map((task, index) => (
-              <Task key={task.id} task={task} index={index} />
+            {animes.map((anime, index) => (
+              <Task key={anime.id} anime={anime} index={index} />
             ))}
             {provided.placeholder}
           </div>

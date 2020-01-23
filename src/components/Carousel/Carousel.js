@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Carousel.scss";
 
-const Carousel = ({ searchResults }) => {
+const Carousel = ({ searchResults, onWatchlistAdd }) => {
   var settings = {
     dots: true,
     arrows: false,
@@ -70,7 +70,12 @@ const Carousel = ({ searchResults }) => {
               </h5>
               <p className="card-text">{searchResults[i].synopsis}</p>
               <div className="text-center">
-                <button className="btn btn-primary">Go somewhere</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => onWatchlistAdd(searchResults[i])}
+                >
+                  + Watchlist
+                </button>
               </div>
             </div>
           </div>

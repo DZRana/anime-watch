@@ -2,9 +2,9 @@ import React from "react";
 import "./Task.scss";
 import { Draggable } from "react-beautiful-dnd";
 
-const Task = ({ task, index }) => {
+const Task = ({ anime, index }) => {
   return (
-    <Draggable draggableId={task.id} index={index}>
+    <Draggable draggableId={anime.id} index={index}>
       {(provided, snapshot) => (
         <div
           className="taskTest"
@@ -16,7 +16,7 @@ const Task = ({ task, index }) => {
             ...provided.draggableProps.style
           }}
         >
-          {task.content}
+          {anime.content}
         </div>
       )}
     </Draggable>
