@@ -2,7 +2,12 @@ import React from "react";
 import Carousel from "../Carousel/Carousel";
 import "./Results.scss";
 
-const Results = ({ searchResults, loadingSearchResults, onWatchlistAdd }) => {
+const Results = ({
+  searchResults,
+  loadingSearchResults,
+  onWatchlistAdd,
+  watchlistData
+}) => {
   return (
     <div>
       {loadingSearchResults && (
@@ -14,6 +19,7 @@ const Results = ({ searchResults, loadingSearchResults, onWatchlistAdd }) => {
         <Carousel
           searchResults={searchResults}
           onWatchlistAdd={onWatchlistAdd}
+          watchlistData={watchlistData}
         />
       )}
     </div>

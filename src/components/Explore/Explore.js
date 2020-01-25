@@ -14,7 +14,8 @@ class Explore extends Component {
       onSearchChange,
       searchResults,
       loadingSearchResults,
-      onWatchlistAdd
+      onWatchlistAdd,
+      watchlistData
     } = this.props;
     return (
       <div>
@@ -23,6 +24,7 @@ class Explore extends Component {
           searchResults={searchResults}
           loadingSearchResults={loadingSearchResults}
           onWatchlistAdd={onWatchlistAdd}
+          watchlistData={watchlistData}
         />
       </div>
     );

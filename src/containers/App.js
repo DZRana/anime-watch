@@ -185,6 +185,7 @@ class App extends Component {
                   searchResults={searchResults}
                   loadingSearchResults={loadingSearchResults}
                   onWatchlistAdd={this.onWatchlistAdd}
+                  watchlistData={watchlistData}
                 />
               </div>
             );
