@@ -41,6 +41,7 @@ class Signin extends Component {
                     <button
                       type="submit"
                       className="btn btn-outline-light btn-block"
+                      onClick={() => this.props.history.push("/explore")}
                     >
                       Submit
                     </button>

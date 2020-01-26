@@ -12,6 +12,7 @@ const Watchlist = ({ onDragEnd, watchlistData }) => {
           const animes = column.animeIds.map(
             animeId => watchlistData.animes[animeId]
           );
+
           return <Column key={column.id} column={column} animes={animes} />;
         })}
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Column.scss";
-import Task from "../Task/Task";
+import Anime from "../Anime/Anime";
 import { Droppable } from "react-beautiful-dnd";
 
 const Column = ({ column, animes }) => {
@@ -26,7 +26,12 @@ const Column = ({ column, animes }) => {
             }}
           >
             {animes.map((anime, index) => (
-              <Task key={anime.id} anime={anime} index={index} />
+              <Anime
+                key={anime.id}
+                anime={anime}
+                index={index}
+                column={column}
+              />
             ))}
             {provided.placeholder}
           </div>

@@ -1,8 +1,8 @@
 import React from "react";
-import "./Task.scss";
+import "./Anime.scss";
 import { Draggable } from "react-beautiful-dnd";
 
-const Task = ({ anime, index }) => {
+const Anime = ({ anime, index, column }) => {
   return (
     <Draggable draggableId={anime.id} index={index}>
       {(provided, snapshot) => (
@@ -12,7 +12,12 @@ const Task = ({ anime, index }) => {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           style={{
-            backgroundColor: snapshot.isDragging ? "lightgreen" : "transparent",
+            backgroundColor:
+              snapshot.isDragging && column.id === "c1"
+                ? "lightgreen"
+                : "transparent" && snapshot.isDragging && column.id === "c2"
+                ? "red"
+                : "transparent",
             ...provided.draggableProps.style
           }}
         >
@@ -23,4 +28,4 @@ const Task = ({ anime, index }) => {
   );
 };
 
-export default Task;
+export default Anime;
