@@ -5,12 +5,12 @@ import { Droppable } from "react-beautiful-dnd";
 
 const Column = ({ column, animes }) => {
   return (
-    <div className="colTest col d-flex flex-column ">
-      <h3 className="titleTest">{column.title}</h3>
+    <div className="colContainer col d-flex flex-column ">
+      <h3 className="colTitle">{column.title}</h3>
       <Droppable droppableId={column.id}>
         {(provided, snapshot) => (
           <div
-            className="taskListTest flex-grow-1"
+            className="animeList flex-grow-1"
             {...provided.droppableProps}
             ref={provided.innerRef}
             style={{
@@ -20,19 +20,24 @@ const Column = ({ column, animes }) => {
                   : "transparent" &&
                     snapshot.isDraggingOver &&
                     column.id === "c2"
+                  ? "orange"
+                  : "transparent" &&
+                    snapshot.isDraggingOver &&
+                    column.id === "c3"
                   ? "#990000"
                   : "transparent",
               ...provided.droppableProps.style
             }}
           >
-            {animes.map((anime, index) => (
-              <Anime
-                key={anime.id}
-                anime={anime}
-                index={index}
-                column={column}
-              />
-            ))}
+            {(column.id === "c1" || column.id === "c2") &&
+              animes.map((anime, index) => (
+                <Anime
+                  key={anime.id}
+                  anime={anime}
+                  index={index}
+                  column={column}
+                />
+              ))}
             {provided.placeholder}
           </div>
         )}

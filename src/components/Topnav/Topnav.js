@@ -9,6 +9,9 @@ const Topnav = () => {
         <Link to="/explore">Explore</Link>
       </div>
       <div className="col">
+        <Link to="/">Sign Out</Link>
+      </div>
+      <div className="col">
         <Link to="/watchlist">My Watchlist</Link>
       </div>
     </div>

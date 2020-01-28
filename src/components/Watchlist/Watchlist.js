@@ -9,12 +9,16 @@ const Watchlist = ({ onDragEnd, watchlistData }) => {
       <div className="row">
         {watchlistData.columnOrder.map(columnId => {
           const column = watchlistData.columns[columnId];
-          const animes = column.animeIds.map(
-            animeId => watchlistData.animes[animeId]
-          );
-
-          return <Column key={column.id} column={column} animes={animes} />;
+          if (columnId !== "c3") {
+            const animes = column.animeIds.map(
+              animeId => watchlistData.animes[animeId]
+            );
+            return <Column key={column.id} column={column} animes={animes} />;
+          }
         })}
+      </div>
+      <div className="row">
+        <Column key={"c3"} column={watchlistData.columns["c3"]} />
       </div>
     </DragDropContext>
   );

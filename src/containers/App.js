@@ -29,9 +29,13 @@ const initialState = {
           id: "c2",
           title: "Finished Watching",
           animeIds: []
+        },
+        c3: {
+          id: "c3",
+          title: "DELETE"
         }
       },
-      columnOrder: ["c1", "c2"]
+      columnOrder: ["c1", "c2", "c3"]
     }
   }
 };
@@ -92,7 +96,7 @@ class App extends Component {
     const { destination, source, draggableId } = result;
     const { user } = this.state;
     const { watchlistData } = this.state.user;
-    const { columns } = this.state.user.watchlistData;
+    const { animes, columns } = this.state.user.watchlistData;
 
     if (!destination) {
       return;
@@ -107,6 +111,7 @@ class App extends Component {
 
     const start = columns[source.droppableId];
     const finish = columns[destination.droppableId];
+
     if (start === finish) {
       const newAnimeIds = Array.from(start.animeIds);
       newAnimeIds.splice(source.index, 1);
@@ -135,35 +140,64 @@ class App extends Component {
     }
 
     // Moving from one list to another
-    const startAnimeIds = Array.from(start.animeIds);
-    startAnimeIds.splice(source.index, 1);
-    const newStart = {
-      ...start,
-      animeIds: startAnimeIds
-    };
+    if (start !== finish && (finish.id === "c1" || finish.id === "c2")) {
+      const startAnimeIds = Array.from(start.animeIds);
+      startAnimeIds.splice(source.index, 1);
+      const newStart = {
+        ...start,
+        animeIds: startAnimeIds
+      };
 
-    const finishAnimeIds = Array.from(finish.animeIds);
-    finishAnimeIds.splice(destination.index, 0, draggableId);
-    const newFinish = {
-      ...finish,
-      animeIds: finishAnimeIds
-    };
+      const finishAnimeIds = Array.from(finish.animeIds);
+      finishAnimeIds.splice(destination.index, 0, draggableId);
+      const newFinish = {
+        ...finish,
+        animeIds: finishAnimeIds
+      };
 
-    const newState = {
-      user: {
-        ...user,
-        watchlistData: {
-          ...watchlistData,
-          columns: {
-            ...columns,
-            [newStart.id]: newStart,
-            [newFinish.id]: newFinish
+      const newState = {
+        user: {
+          ...user,
+          watchlistData: {
+            ...watchlistData,
+            columns: {
+              ...columns,
+              [newStart.id]: newStart,
+              [newFinish.id]: newFinish
+            }
           }
         }
-      }
-    };
+      };
 
-    this.setState(newState);
+      this.setState(newState);
+    }
+
+    // Deleting an anime
+    if (start !== finish && finish.id === "c3") {
+      const startAnimeIds = Array.from(start.animeIds);
+      const removed = startAnimeIds.splice(source.index, 1);
+
+      const newStart = {
+        ...start,
+        animeIds: startAnimeIds
+      };
+
+      const newState = {
+        user: {
+          ...user,
+          watchlistData: {
+            ...watchlistData,
+            columns: {
+              ...columns,
+              [newStart.id]: newStart
+            }
+          }
+        }
+      };
+
+      this.setState(newState);
+      delete animes[removed];
+    }
   };
 
   render() {

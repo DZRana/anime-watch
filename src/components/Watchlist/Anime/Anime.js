@@ -7,7 +7,7 @@ const Anime = ({ anime, index, column }) => {
     <Draggable draggableId={anime.id} index={index}>
       {(provided, snapshot) => (
         <div
-          className="taskTest"
+          className="anime"
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
@@ -16,7 +16,7 @@ const Anime = ({ anime, index, column }) => {
               snapshot.isDragging && column.id === "c1"
                 ? "lightgreen"
                 : "transparent" && snapshot.isDragging && column.id === "c2"
-                ? "red"
+                ? "gold"
                 : "transparent",
             ...provided.draggableProps.style
           }}
