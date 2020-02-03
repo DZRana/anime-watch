@@ -67,7 +67,11 @@ const Carousel = ({ searchResults, onWatchlistAdd, watchlistData }) => {
             />
             <div className="card-body">
               <h5 className="card-title text-center">
-                <a href={searchResults[i].url} target="_blank">
+                <a
+                  href={searchResults[i].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {searchResults[i].title}
                 </a>
               </h5>
