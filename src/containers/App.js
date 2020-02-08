@@ -46,6 +46,19 @@ class App extends Component {
     this.state = initialState;
   }
 
+  loadUser = data => {
+    const { watchlistData } = this.state.user;
+    this.setState({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        joined: data.joined,
+        watchlistData: { ...watchlistData }
+      }
+    });
+  };
+
   callAPI = async event => {
     this.setState({ loadingSearchResults: true });
     try {
@@ -206,8 +219,18 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/signin" component={Signin} />
-        <Route path="/register" component={Register} />
+        <Route
+          path="/signin"
+          render={() => {
+            return <Signin loadUser={this.loadUser} />;
+          }}
+        />
+        <Route
+          path="/register"
+          render={() => {
+            return <Register loadUser={this.loadUser} />;
+          }}
+        />
         <Route
           path="/explore"
           render={() => {

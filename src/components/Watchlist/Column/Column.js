@@ -1,6 +1,6 @@
 import React from "react";
 import "./Column.scss";
-import Anime from "../Anime/Anime";
+import Anime from "./Anime/Anime";
 import { Droppable } from "react-beautiful-dnd";
 
 const Column = ({ column, animes }) => {

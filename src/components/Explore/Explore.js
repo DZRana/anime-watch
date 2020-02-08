@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Explore.scss";
-import Searchbar from "../Searchbar/Searchbar";
-import Results from "../Results/Results";
+import Searchbar from "./Searchbar/Searchbar";
+import Results from "./Results/Results";
 
 class Explore extends Component {
   constructor(props) {

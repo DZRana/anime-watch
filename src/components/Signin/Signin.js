@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Signin.scss";
@@ -9,6 +10,46 @@ toast.configure({
 });
 
 class Signin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      signInEmail: "",
+      signInPassword: ""
+    };
+  }
+
+  onEmailChange = event => {
+    this.setState({ signInEmail: event.target.value });
+  };
+
+  onPasswordChange = event => {
+    this.setState({ signInPassword: event.target.value });
+  };
+
+  callSigninEndpoint = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/signin", {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: this.state.signInEmail,
+          password: this.state.signInPassword
+        })
+      });
+      const user = await res.json();
+      if (user.id) {
+        this.props.loadUser(user);
+        this.props.history.push("/explore");
+      } else toast.error("Wrong credentials!!!");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  onSubmitSignIn = event => {
+    if (event.key === "Enter") this.callSigninEndpoint();
+  };
+
   render() {
     return (
       <div className="container-fluid">
@@ -25,6 +66,8 @@ class Signin extends Component {
                     id="email"
                     aria-describedby="emailHelp"
                     placeholder="email@site.com"
+                    onChange={this.onEmailChange}
+                    onKeyDown={this.onSubmitSignIn}
                   />
                 </div>
                 <div className="form-group">
@@ -34,6 +77,8 @@ class Signin extends Component {
                     className="form-control"
                     id="password"
                     placeholder="Password"
+                    onChange={this.onPasswordChange}
+                    onKeyDown={this.onSubmitSignIn}
                   />
                 </div>
                 <div className="col">
@@ -41,7 +86,7 @@ class Signin extends Component {
                     <button
                       type="submit"
                       className="btn btn-outline-light btn-block"
-                      onClick={() => this.props.history.push("/explore")}
+                      onClick={this.callSigninEndpoint}
                     >
                       Submit
                     </button>
@@ -64,4 +109,4 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+export default withRouter(Signin);

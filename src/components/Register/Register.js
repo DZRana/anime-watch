@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Register.scss";
@@ -9,6 +10,52 @@ toast.configure({
 });
 
 class Register extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      name: ""
+    };
+  }
+
+  onEmailChange = event => {
+    this.setState({ email: event.target.value });
+  };
+
+  onPasswordChange = event => {
+    this.setState({ password: event.target.value });
+  };
+
+  onNameChange = event => {
+    this.setState({ name: event.target.value });
+  };
+
+  callRegisterEndpoint = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/register", {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password,
+          name: this.state.name
+        })
+      });
+      const user = await res.json();
+      if (user.id) {
+        this.props.loadUser(user);
+        this.props.history.push("/explore");
+      } else toast.error("Invalid entries!!!");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  onSubmitRegister = event => {
+    if (event.key === "Enter") this.callRegisterEndpoint();
+  };
+
   render() {
     return (
       <div className="container-fluid">
@@ -28,6 +75,8 @@ class Register extends Component {
                     className="form-control"
                     id="name"
                     placeholder="Full Name"
+                    onChange={this.onNameChange}
+                    onKeyDown={this.onSubmitRegister}
                   />
                 </div>
                 <div className="form-group">
@@ -38,6 +87,8 @@ class Register extends Component {
                     id="email"
                     aria-describedby="emailHelp"
                     placeholder="email@site.com"
+                    onChange={this.onEmailChange}
+                    onKeyDown={this.onSubmitRegister}
                   />
                 </div>
                 <div className="form-group">
@@ -47,6 +98,8 @@ class Register extends Component {
                     className="form-control"
                     id="password"
                     placeholder="Password"
+                    onChange={this.onPasswordChange}
+                    onKeyDown={this.onSubmitRegister}
                   />
                 </div>
                 <div className="col">
@@ -54,7 +107,7 @@ class Register extends Component {
                     <button
                       type="submit"
                       className="btn btn-outline-light btn-block"
-                      onClick={() => this.props.history.push("/explore")}
+                      onClick={this.callRegisterEndpoint}
                     >
                       Submit
                     </button>
@@ -77,4 +130,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default withRouter(Register);
