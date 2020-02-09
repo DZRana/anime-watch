@@ -38,6 +38,7 @@ class Signin extends Component {
       });
       const user = await res.json();
       if (user.id) {
+        this.props.toggleSignedIn();
         this.props.loadUser(user);
         this.props.history.push("/explore");
       } else toast.error("Wrong credentials!!!");
