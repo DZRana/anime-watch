@@ -9,7 +9,6 @@ import Explore from "../components/Explore/Explore";
 import Watchlist from "../components/Watchlist/Watchlist";
 
 const initialState = {
-  isSignedIn: false,
   searchResults: [],
   loadingSearchResults: false,
   user: {
@@ -22,7 +21,7 @@ const initialState = {
       columns: {
         c1: {
           id: "c1",
-          title: "Watchlist",
+          title: "Currently Watching",
           animeIds: []
         },
         c2: {
@@ -46,10 +45,6 @@ class App extends Component {
     this.state = initialState;
   }
 
-  toggleSignedIn = () => {
-    this.setState({ isSignedIn: !this.isSignedIn });
-  };
-
   loadUser = data => {
     const { watchlistData } = this.state.user;
     this.setState({
@@ -61,6 +56,23 @@ class App extends Component {
         watchlistData: { ...watchlistData }
       }
     });
+  };
+
+  updateUserWatchlist = async () => {
+    const { watchlistData } = this.state.user;
+    try {
+      const res = await fetch("http://localhost:3000/watchlist", {
+        method: "put",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          watchlistData: watchlistData
+        })
+      });
+      const testResponse = await res.json();
+      console.log(testResponse);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   callAPI = async event => {
@@ -114,6 +126,8 @@ class App extends Component {
         }
       }
     });
+    console.log("animes:", animes);
+    console.log("columns:", columns);
   };
 
   onDragEnd = result => {
@@ -225,72 +239,55 @@ class App extends Component {
   };
 
   render() {
-    const { isSignedIn, searchResults, loadingSearchResults } = this.state;
+    const { searchResults, loadingSearchResults } = this.state;
     const { watchlistData } = this.state.user;
     return (
-      <div>
-        {!isSignedIn ? (
-          <Switch>
-            <Route exact path="(/|/explore|/watchlist)" component={Home} />
-            <Route
-              path="/signin"
-              render={() => {
-                return (
-                  <Signin
-                    toggleSignedIn={this.toggleSignedIn}
-                    loadUser={this.loadUser}
-                  />
-                );
-              }}
-            />
-            <Route
-              path="/register"
-              render={() => {
-                return (
-                  <Register
-                    toggleSignedIn={this.toggleSignedIn}
-                    loadUser={this.loadUser}
-                  />
-                );
-              }}
-            />
-          </Switch>
-        ) : (
-          <Switch>
-            <Route
-              path="/explore"
-              render={() => {
-                return (
-                  <div className="container-fluid">
-                    <Topnav toggleSignedIn={this.toggleSignedIn} />
-                    <Explore
-                      onSearchChange={this.onSearchChange}
-                      searchResults={searchResults}
-                      loadingSearchResults={loadingSearchResults}
-                      onWatchlistAdd={this.onWatchlistAdd}
-                      watchlistData={watchlistData}
-                    />
-                  </div>
-                );
-              }}
-            />
-            <Route
-              path="/watchlist"
-              render={() => {
-                return (
-                  <div className="container-fluid">
-                    <Topnav toggleSignedIn={this.toggleSignedIn} />
-                    <Watchlist
-                      onDragEnd={this.onDragEnd}
-                      watchlistData={watchlistData}
-                    />
-                  </div>
-                );
-              }}
-            />
-          </Switch>
-        )}
-      </div>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route
+          path="/signin"
+          render={() => {
+            return <Signin loadUser={this.loadUser} />;
+          }}
+        />
+        <Route
+          path="/register"
+          render={() => {
+            return <Register loadUser={this.loadUser} />;
+          }}
+        />
+        <Route
+          path="/explore"
+          render={() => {
+            return (
+              <div className="container-fluid">
+                <Topnav updateUserWatchlist={this.updateUserWatchlist} />
+                <Explore
+                  onSearchChange={this.onSearchChange}
+                  searchResults={searchResults}
+                  loadingSearchResults={loadingSearchResults}
+                  onWatchlistAdd={this.onWatchlistAdd}
+                  watchlistData={watchlistData}
+                />
+              </div>
+            );
+          }}
+        />
+        <Route
+          path="/watchlist"
+          render={() => {
+            return (
+              <div className="container-fluid">
+                <Topnav updateUserWatchlist={this.updateUserWatchlist} />
+                <Watchlist
+                  onDragEnd={this.onDragEnd}
+                  watchlistData={watchlistData}
+                />
+              </div>
+            );
+          }}
+        />
+      </Switch>
     );
   }
 }

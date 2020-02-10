@@ -1,17 +1,23 @@
 import React from "react";
 import "./Topnav.scss";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-const Topnav = ({ toggleSignedIn }) => {
+const Topnav = props => {
   return (
     <div className="mt-4 topnav row text-center text-nowrap animated fadeInUp slow">
       <div className="col">
         <Link to="/explore">Explore</Link>
       </div>
       <div className="col">
-        <Link to="/" onClick={toggleSignedIn}>
+        <button
+          className="btn btn-outline-danger btn-block"
+          onClick={() => {
+            props.updateUserWatchlist();
+            props.history.push("/");
+          }}
+        >
           Sign Out
-        </Link>
+        </button>
       </div>
       <div className="col">
         <Link to="/watchlist">My Watchlist</Link>
@@ -20,4 +26,4 @@ const Topnav = ({ toggleSignedIn }) => {
   );
 };
 
-export default Topnav;
+export default withRouter(Topnav);
