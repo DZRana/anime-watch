@@ -37,9 +37,10 @@ class Register extends Component {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          name: this.state.name,
           email: this.state.email,
           password: this.state.password,
-          name: this.state.name
+          watchlistData: this.props.watchlistData
         })
       });
       const user = await res.json();

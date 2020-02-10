@@ -46,30 +46,28 @@ class App extends Component {
   }
 
   loadUser = data => {
-    const { watchlistData } = this.state.user;
     this.setState({
       user: {
         id: data.id,
         name: data.name,
         email: data.email,
         joined: data.joined,
-        watchlistData: { ...watchlistData }
+        watchlistData: data.watchlist_data
       }
     });
   };
 
   updateUserWatchlist = async () => {
-    const { watchlistData } = this.state.user;
+    const { id, watchlistData } = this.state.user;
     try {
       const res = await fetch("http://localhost:3000/watchlist", {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          id: id,
           watchlistData: watchlistData
         })
       });
-      const testResponse = await res.json();
-      console.log(testResponse);
     } catch (err) {
       console.log(err);
     }
@@ -126,8 +124,6 @@ class App extends Component {
         }
       }
     });
-    console.log("animes:", animes);
-    console.log("columns:", columns);
   };
 
   onDragEnd = result => {
@@ -253,7 +249,12 @@ class App extends Component {
         <Route
           path="/register"
           render={() => {
-            return <Register loadUser={this.loadUser} />;
+            return (
+              <Register
+                loadUser={this.loadUser}
+                watchlistData={watchlistData}
+              />
+            );
           }}
         />
         <Route
