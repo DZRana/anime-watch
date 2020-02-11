@@ -9,15 +9,14 @@ const Topnav = props => {
         <Link to="/explore">Explore</Link>
       </div>
       <div className="col">
-        <button
-          className="btn btn-outline-danger btn-block"
+        <Link
+          to="/"
           onClick={() => {
             props.updateUserWatchlist();
-            props.history.push("/");
           }}
         >
           Sign Out
-        </button>
+        </Link>
       </div>
       <div className="col">
         <Link to="/watchlist">My Watchlist</Link>

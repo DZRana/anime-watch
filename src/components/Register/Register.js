@@ -40,7 +40,26 @@ class Register extends Component {
           name: this.state.name,
           email: this.state.email,
           password: this.state.password,
-          watchlistData: this.props.watchlistData
+          watchlistData: {
+            animes: {},
+            columns: {
+              c1: {
+                id: "c1",
+                title: "Currently Watching",
+                animeIds: []
+              },
+              c2: {
+                id: "c2",
+                title: "Finished Watching",
+                animeIds: []
+              },
+              c3: {
+                id: "c3",
+                title: "DELETE"
+              }
+            },
+            columnOrder: ["c1", "c2", "c3"]
+          }
         })
       });
       const user = await res.json();

@@ -60,7 +60,7 @@ class App extends Component {
   updateUserWatchlist = async () => {
     const { id, watchlistData } = this.state.user;
     try {
-      const res = await fetch("http://localhost:3000/watchlist", {
+      await fetch("http://localhost:3000/watchlist", {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -249,12 +249,7 @@ class App extends Component {
         <Route
           path="/register"
           render={() => {
-            return (
-              <Register
-                loadUser={this.loadUser}
-                watchlistData={watchlistData}
-              />
-            );
+            return <Register loadUser={this.loadUser} />;
           }}
         />
         <Route
