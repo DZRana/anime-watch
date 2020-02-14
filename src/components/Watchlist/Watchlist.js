@@ -6,7 +6,7 @@ import Column from "./Column/Column";
 const Watchlist = ({ onDragEnd, watchlistData }) => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="row">
+      <div className="mt-5 row">
         {watchlistData.columnOrder.map(columnId => {
           const column = watchlistData.columns[columnId];
           if (columnId !== "c3") {

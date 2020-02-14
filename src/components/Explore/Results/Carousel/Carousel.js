@@ -65,8 +65,8 @@ const Carousel = ({ searchResults, onWatchlistAdd, watchlistData }) => {
               className="card-img-top"
               alt="..."
             />
-            <div className="card-body">
-              <h5 className="card-title text-center">
+            <div className="card-body text-center d-flex flex-column justify-content-around">
+              <h5 className="card-title">
                 <a
                   href={searchResults[i].url}
                   target="_blank"
@@ -76,7 +76,7 @@ const Carousel = ({ searchResults, onWatchlistAdd, watchlistData }) => {
                 </a>
               </h5>
               <p className="card-text">{searchResults[i].synopsis}</p>
-              <div className="text-center">
+              <div>
                 {Object.keys(watchlistData.animes).includes(
                   searchResults[i].mal_id.toString()
                 ) ? (

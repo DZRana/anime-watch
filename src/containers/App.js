@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./App.scss";
 import Topnav from "../components/Topnav/Topnav";
 import Home from "../components/Home/Home";
@@ -7,6 +8,10 @@ import Signin from "../components/Signin/Signin";
 import Register from "../components/Register/Register";
 import Explore from "../components/Explore/Explore";
 import Watchlist from "../components/Watchlist/Watchlist";
+
+toast.configure({
+  autoClose: 1500
+});
 
 const initialState = {
   searchResults: [],
@@ -74,21 +79,23 @@ class App extends Component {
   };
 
   callAPI = async event => {
-    this.setState({ loadingSearchResults: true });
-    try {
-      const res = await fetch("http://localhost:3000/explore", {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          input: event.target.value
-        })
-      });
-      const api = await res.json();
-      this.setState({ searchResults: api.results });
-    } catch (err) {
-      console.log(err);
-    }
-    this.setState({ loadingSearchResults: false });
+    if (event.target.value.length >= 3) {
+      this.setState({ loadingSearchResults: true });
+      try {
+        const res = await fetch("http://localhost:3000/explore", {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            input: event.target.value
+          })
+        });
+        const api = await res.json();
+        this.setState({ searchResults: api.results });
+      } catch (err) {
+        console.log(err);
+      }
+      this.setState({ loadingSearchResults: false });
+    } else toast.error("Minimum 3 letters required!");
   };
 
   onSearchChange = event => {
@@ -256,7 +263,7 @@ class App extends Component {
           path="/explore"
           render={() => {
             return (
-              <div className="container-fluid">
+              <div className="container-fluid explore">
                 <Topnav updateUserWatchlist={this.updateUserWatchlist} />
                 <Explore
                   onSearchChange={this.onSearchChange}
