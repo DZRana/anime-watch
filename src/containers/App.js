@@ -36,7 +36,7 @@ const initialState = {
         },
         c3: {
           id: "c3",
-          title: "DELETE"
+          title: "Remove from Watchlist"
         }
       },
       columnOrder: ["c1", "c2", "c3"]
@@ -282,10 +282,12 @@ class App extends Component {
             return (
               <div className="container-fluid">
                 <Topnav updateUserWatchlist={this.updateUserWatchlist} />
-                <Watchlist
-                  onDragEnd={this.onDragEnd}
-                  watchlistData={watchlistData}
-                />
+                <div className="animated fadeIn slow">
+                  <Watchlist
+                    onDragEnd={this.onDragEnd}
+                    watchlistData={watchlistData}
+                  />
+                </div>
               </div>
             );
           }}

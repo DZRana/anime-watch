@@ -55,7 +55,7 @@ class Register extends Component {
               },
               c3: {
                 id: "c3",
-                title: "DELETE"
+                title: "Remove from Watchlist"
               }
             },
             columnOrder: ["c1", "c2", "c3"]
@@ -78,7 +78,7 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid register">
         <div className="d-flex justify-content-center align-items-center h-100">
           <div className="card animated fadeInRight slow">
             <img

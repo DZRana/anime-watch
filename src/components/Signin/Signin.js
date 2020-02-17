@@ -52,7 +52,7 @@ class Signin extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid signin">
         <div className="d-flex justify-content-center align-items-center h-100">
           <div className="card animated fadeInRight slow">
             <img className="card-img-top" alt="signin-gif" src={signin_gif} />

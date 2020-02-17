@@ -53,17 +53,17 @@ const Carousel = ({ searchResults, onWatchlistAdd, watchlistData }) => {
     ]
   };
   return (
-    <Slider className="mt-5 carousel" {...settings}>
+    <Slider className="mt-4 carousel" {...settings}>
       {searchResults.map((anime, i) => {
         return (
           <div
-            className="animated fadeInRight slow card"
+            className="animated fadeInRight slow card mb-2"
             key={searchResults[i].mal_id}
           >
             <img
               src={searchResults[i].image_url}
               className="card-img-top"
-              alt="..."
+              alt={`${searchResults[i].title}-thumbnail`}
             />
             <div className="card-body text-center d-flex flex-column justify-content-around">
               <h5 className="card-title">
@@ -75,7 +75,9 @@ const Carousel = ({ searchResults, onWatchlistAdd, watchlistData }) => {
                   {searchResults[i].title}
                 </a>
               </h5>
-              <p className="card-text">{searchResults[i].synopsis}</p>
+              <p className="card-text d-none d-xl-block">
+                {searchResults[i].synopsis}
+              </p>
               <div>
                 {Object.keys(watchlistData.animes).includes(
                   searchResults[i].mal_id.toString()

@@ -6,18 +6,18 @@ import register_icon from "./register-icon.png";
 
 const Home = props => {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid home">
       <div className="d-flex justify-content-center align-items-center h-100">
         <div className="text-center">
-          <h1 className="animated fadeInLeft slower text-nowrap">
+          <h1 className="animated fadeInLeft slow text-nowrap">
             Anime
             <img alt="ninja" src={ninja} />
             Watch
           </h1>
-          <h2 className="animated fadeInLeft slower delay-1s">
+          <h2 className="animated fadeInUp slow delay-1s">
             Your own personal anime watchlist tracker
           </h2>
-          <div className="mt-5 animated fadeInUp slower delay-2s">
+          <div className="mt-5 animated fadeInUp slow delay-2s">
             <div className="col">
               <div className="row justify-content-center">
                 <button
