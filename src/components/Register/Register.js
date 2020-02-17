@@ -33,35 +33,38 @@ class Register extends Component {
 
   callRegisterEndpoint = async () => {
     try {
-      const res = await fetch("http://localhost:3000/register", {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: this.state.name,
-          email: this.state.email,
-          password: this.state.password,
-          watchlistData: {
-            animes: {},
-            columns: {
-              c1: {
-                id: "c1",
-                title: "Currently Watching",
-                animeIds: []
+      const res = await fetch(
+        "https://arcane-garden-26081.herokuapp.com/register",
+        {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+            watchlistData: {
+              animes: {},
+              columns: {
+                c1: {
+                  id: "c1",
+                  title: "Currently Watching",
+                  animeIds: []
+                },
+                c2: {
+                  id: "c2",
+                  title: "Finished Watching",
+                  animeIds: []
+                },
+                c3: {
+                  id: "c3",
+                  title: "Remove from Watchlist"
+                }
               },
-              c2: {
-                id: "c2",
-                title: "Finished Watching",
-                animeIds: []
-              },
-              c3: {
-                id: "c3",
-                title: "Remove from Watchlist"
-              }
-            },
-            columnOrder: ["c1", "c2", "c3"]
-          }
-        })
-      });
+              columnOrder: ["c1", "c2", "c3"]
+            }
+          })
+        }
+      );
       const user = await res.json();
       if (user.id) {
         this.props.loadUser(user);

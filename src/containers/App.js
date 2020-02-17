@@ -65,7 +65,7 @@ class App extends Component {
   updateUserWatchlist = async () => {
     const { id, watchlistData } = this.state.user;
     try {
-      await fetch("http://localhost:3000/watchlist", {
+      await fetch("https://arcane-garden-26081.herokuapp.com/watchlist", {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -82,13 +82,16 @@ class App extends Component {
     if (event.target.value.length >= 3) {
       this.setState({ loadingSearchResults: true });
       try {
-        const res = await fetch("http://localhost:3000/explore", {
-          method: "post",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            input: event.target.value
-          })
-        });
+        const res = await fetch(
+          "https://arcane-garden-26081.herokuapp.com/explore",
+          {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              input: event.target.value
+            })
+          }
+        );
         const api = await res.json();
         this.setState({ searchResults: api.results });
       } catch (err) {
