@@ -10,7 +10,7 @@ import Explore from "../components/Explore/Explore";
 import Watchlist from "../components/Watchlist/Watchlist";
 
 toast.configure({
-  autoClose: 1500
+  autoClose: 1500,
 });
 
 const initialState = {
@@ -27,22 +27,26 @@ const initialState = {
         c1: {
           id: "c1",
           title: "Currently Watching",
-          animeIds: []
+          animeIds: [],
         },
         c2: {
           id: "c2",
           title: "Finished Watching",
-          animeIds: []
+          animeIds: [],
         },
         c3: {
           id: "c3",
-          title: "Remove from Watchlist"
-        }
+          title: "Remove from Watchlist",
+        },
       },
-      columnOrder: ["c1", "c2", "c3"]
-    }
-  }
+      columnOrder: ["c1", "c2", "c3"],
+    },
+  },
 };
+
+// const App = () => {
+
+// }
 
 class App extends Component {
   constructor() {
@@ -50,15 +54,15 @@ class App extends Component {
     this.state = initialState;
   }
 
-  loadUser = data => {
+  loadUser = (data) => {
     this.setState({
       user: {
         id: data.id,
         name: data.name,
         email: data.email,
         joined: data.joined,
-        watchlistData: data.watchlist_data
-      }
+        watchlistData: data.watchlist_data,
+      },
     });
   };
 
@@ -70,15 +74,15 @@ class App extends Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           id: id,
-          watchlistData: watchlistData
-        })
+          watchlistData: watchlistData,
+        }),
       });
     } catch (err) {
       console.log(err);
     }
   };
 
-  callAPI = async event => {
+  callAPI = async (event) => {
     if (event.target.value.length >= 3) {
       this.setState({ loadingSearchResults: true });
       try {
@@ -88,8 +92,8 @@ class App extends Component {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              input: event.target.value
-            })
+              input: event.target.value,
+            }),
           }
         );
         const api = await res.json();
@@ -101,13 +105,13 @@ class App extends Component {
     } else toast.error("Minimum 3 letters required!");
   };
 
-  onSearchChange = event => {
+  onSearchChange = (event) => {
     if (event.keyCode === 13) {
       this.callAPI(event);
     }
   };
 
-  onWatchlistAdd = animeInfo => {
+  onWatchlistAdd = (animeInfo) => {
     const { user } = this.state;
     const { watchlistData } = this.state.user;
     const { animes, columns } = this.state.user.watchlistData;
@@ -121,22 +125,22 @@ class App extends Component {
             ...animes,
             [animeInfo.mal_id.toString()]: {
               id: animeInfo.mal_id.toString(),
-              content: animeInfo.title
-            }
+              content: animeInfo.title,
+            },
           },
           columns: {
             ...columns,
             c1: {
               ...columns.c1,
-              animeIds: [...columns.c1.animeIds, animeInfo.mal_id.toString()]
-            }
-          }
-        }
-      }
+              animeIds: [...columns.c1.animeIds, animeInfo.mal_id.toString()],
+            },
+          },
+        },
+      },
     });
   };
 
-  onDragEnd = result => {
+  onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
     const { user } = this.state;
     const { watchlistData } = this.state.user;
@@ -163,7 +167,7 @@ class App extends Component {
 
       const newColumn = {
         ...start,
-        animeIds: newAnimeIds
+        animeIds: newAnimeIds,
       };
 
       const newState = {
@@ -173,10 +177,10 @@ class App extends Component {
             ...watchlistData,
             columns: {
               ...columns,
-              [newColumn.id]: newColumn
-            }
-          }
-        }
+              [newColumn.id]: newColumn,
+            },
+          },
+        },
       };
 
       this.setState(newState);
@@ -189,14 +193,14 @@ class App extends Component {
       startAnimeIds.splice(source.index, 1);
       const newStart = {
         ...start,
-        animeIds: startAnimeIds
+        animeIds: startAnimeIds,
       };
 
       const finishAnimeIds = Array.from(finish.animeIds);
       finishAnimeIds.splice(destination.index, 0, draggableId);
       const newFinish = {
         ...finish,
-        animeIds: finishAnimeIds
+        animeIds: finishAnimeIds,
       };
 
       const newState = {
@@ -207,10 +211,10 @@ class App extends Component {
             columns: {
               ...columns,
               [newStart.id]: newStart,
-              [newFinish.id]: newFinish
-            }
-          }
-        }
+              [newFinish.id]: newFinish,
+            },
+          },
+        },
       };
 
       this.setState(newState);
@@ -223,7 +227,7 @@ class App extends Component {
 
       const newStart = {
         ...start,
-        animeIds: startAnimeIds
+        animeIds: startAnimeIds,
       };
 
       const newState = {
@@ -233,10 +237,10 @@ class App extends Component {
             ...watchlistData,
             columns: {
               ...columns,
-              [newStart.id]: newStart
-            }
-          }
-        }
+              [newStart.id]: newStart,
+            },
+          },
+        },
       };
 
       this.setState(newState);
