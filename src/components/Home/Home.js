@@ -4,7 +4,10 @@ import ninja from "./ninja.png";
 import signin_icon from "./signin-icon.png";
 import register_icon from "./register-icon.png";
 
-const Home = props => {
+import { useHistory } from "react-router-dom";
+
+const Home = () => {
+  const history = useHistory();
   return (
     <div className="container-fluid home">
       <div className="d-flex justify-content-center align-items-center h-100">
@@ -23,7 +26,7 @@ const Home = props => {
                 <button
                   type="button"
                   className="btn btn-outline-light btn-block"
-                  onClick={() => props.history.push("/signin")}
+                  onClick={() => history.push("/signin")}
                 >
                   Sign In
                 </button>
@@ -35,7 +38,7 @@ const Home = props => {
                 <button
                   type="button"
                   className="btn btn-outline-light btn-block"
-                  onClick={() => props.history.push("/register")}
+                  onClick={() => history.push("/register")}
                 >
                   Register
                 </button>
