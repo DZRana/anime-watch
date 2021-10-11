@@ -1,156 +1,136 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import React, { useState } from "react";
+import { withRouter, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Register.scss";
 import register_gif from "./register-gif.gif";
+import animeWatchApi from "../../apis/anime-watch-api";
 
 toast.configure({
-  autoClose: 3000
+  autoClose: 3000,
 });
 
-class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-      name: ""
-    };
-  }
+const Register = ({ loadUser }) => {
+  const history = useHistory();
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerName, setRegisterName] = useState("");
 
-  onEmailChange = event => {
-    this.setState({ email: event.target.value });
-  };
-
-  onPasswordChange = event => {
-    this.setState({ password: event.target.value });
-  };
-
-  onNameChange = event => {
-    this.setState({ name: event.target.value });
-  };
-
-  callRegisterEndpoint = async () => {
-    try {
-      const res = await fetch(
-        "https://arcane-garden-26081.herokuapp.com/register",
-        {
-          method: "post",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-            watchlistData: {
-              animes: {},
-              columns: {
-                c1: {
-                  id: "c1",
-                  title: "Currently Watching",
-                  animeIds: []
-                },
-                c2: {
-                  id: "c2",
-                  title: "Finished Watching",
-                  animeIds: []
-                },
-                c3: {
-                  id: "c3",
-                  title: "Remove from Watchlist"
-                }
-              },
-              columnOrder: ["c1", "c2", "c3"]
-            }
-          })
-        }
-      );
-      const user = await res.json();
-      if (user.id) {
-        this.props.loadUser(user);
-        this.props.history.push("/explore");
-      } else toast.error("Invalid entries!!!");
-    } catch (err) {
-      console.log(err);
+  const callRegisterEndpoint = async () => {
+    const response = await animeWatchApi
+      .post("/register", {
+        name: registerName,
+        email: registerEmail,
+        password: registerPassword,
+        watchlistData: {
+          animes: {},
+          columns: {
+            c1: {
+              id: "c1",
+              title: "Currently Watching",
+              animeIds: [],
+            },
+            c2: {
+              id: "c2",
+              title: "Finished Watching",
+              animeIds: [],
+            },
+            c3: {
+              id: "c3",
+              title: "Remove from Watchlist",
+            },
+          },
+          columnOrder: ["c1", "c2", "c3"],
+        },
+      })
+      .catch(() => {
+        toast.error("Invalid entries!!!");
+      });
+    if (response) {
+      loadUser(response.data);
+      history.push("/explore");
     }
   };
 
-  onSubmitRegister = event => {
-    if (event.key === "Enter") this.callRegisterEndpoint();
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    callRegisterEndpoint();
   };
 
-  render() {
-    return (
-      <div className="container-fluid register">
-        <div className="d-flex justify-content-center align-items-center h-100">
-          <div className="card animated fadeInRight slow">
-            <img
-              className="card-img-top"
-              alt="register-gif"
-              src={register_gif}
-            />
-            <div className="card-body">
-              <article className="text-center">
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
+  return (
+    <div className="container-fluid register">
+      <div className="d-flex justify-content-center align-items-center h-100">
+        <div className="card animated fadeInRight slow">
+          <img className="card-img-top" alt="register-gif" src={register_gif} />
+          <div className="card-body">
+            <article className="text-center">
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <form onSubmit={onFormSubmit}>
                   <input
                     type="text"
                     className="form-control"
                     id="name"
                     placeholder="Full Name"
-                    onChange={this.onNameChange}
-                    onKeyDown={this.onSubmitRegister}
+                    value={registerName}
+                    onChange={(event) => setRegisterName(event.target.value)}
                   />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
+                </form>
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <form onSubmit={onFormSubmit}>
                   <input
                     type="email"
                     className="form-control"
                     id="email"
                     aria-describedby="emailHelp"
                     placeholder="email@site.com"
-                    onChange={this.onEmailChange}
-                    onKeyDown={this.onSubmitRegister}
+                    value={registerEmail}
+                    onChange={(event) => setRegisterEmail(event.target.value)}
                   />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
+                </form>
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <form onSubmit={onFormSubmit}>
                   <input
                     type="password"
                     className="form-control"
                     id="password"
                     placeholder="Password"
-                    onChange={this.onPasswordChange}
-                    onKeyDown={this.onSubmitRegister}
+                    value={registerPassword}
+                    onChange={(event) =>
+                      setRegisterPassword(event.target.value)
+                    }
                   />
+                </form>
+              </div>
+              <div className="col">
+                <div className="row justify-content-center">
+                  <button
+                    type="submit"
+                    className="btn btn-outline-light btn-block"
+                    onClick={callRegisterEndpoint}
+                  >
+                    Submit
+                  </button>
                 </div>
-                <div className="col">
-                  <div className="row justify-content-center">
-                    <button
-                      type="submit"
-                      className="btn btn-outline-light btn-block"
-                      onClick={this.callRegisterEndpoint}
-                    >
-                      Submit
-                    </button>
-                  </div>
-                  <div className="mt-1 row justify-content-center">
-                    <button
-                      className="btn btn-outline-danger btn-block"
-                      onClick={() => this.props.history.push("/")}
-                    >
-                      Back
-                    </button>
-                  </div>
+                <div className="mt-1 row justify-content-center">
+                  <button
+                    className="btn btn-outline-danger btn-block"
+                    onClick={() => history.push("/")}
+                  >
+                    Back
+                  </button>
                 </div>
-              </article>
-            </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default withRouter(Register);

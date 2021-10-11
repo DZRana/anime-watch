@@ -2,7 +2,7 @@ import React from "react";
 import "./Topnav.scss";
 import { Link, withRouter } from "react-router-dom";
 
-const Topnav = props => {
+const Topnav = ({ updateUserWatchlist }) => {
   return (
     <div className="mt-4 topnav row text-center text-nowrap animated fadeInUp slow">
       <div className="col">
@@ -12,7 +12,7 @@ const Topnav = props => {
         <Link
           to="/"
           onClick={() => {
-            props.updateUserWatchlist();
+            updateUserWatchlist();
           }}
         >
           Sign Out

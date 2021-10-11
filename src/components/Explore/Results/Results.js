@@ -4,18 +4,18 @@ import "./Results.scss";
 
 const Results = ({
   searchResults,
-  loadingSearchResults,
+  loadingSearchResultsFlag,
   onWatchlistAdd,
-  watchlistData
+  watchlistData,
 }) => {
   return (
     <div>
-      {loadingSearchResults && (
+      {loadingSearchResultsFlag && (
         <div className="loading text-center animated flash infinite">
           <p>LOADING</p>
         </div>
       )}
-      {!loadingSearchResults && searchResults.length > 4 && (
+      {!loadingSearchResultsFlag && searchResults.length > 4 && (
         <Carousel
           searchResults={searchResults}
           onWatchlistAdd={onWatchlistAdd}
