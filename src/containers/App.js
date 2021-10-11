@@ -10,6 +10,8 @@ import Explore from "../components/Explore/Explore";
 import Watchlist from "../components/Watchlist/Watchlist";
 import animeWatchApi from "../apis/anime-watch-api";
 
+//test
+
 toast.configure({
   autoClose: 1500,
 });
