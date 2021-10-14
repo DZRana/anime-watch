@@ -1,13 +1,11 @@
 import React from "react";
 import Carousel from "./Carousel/Carousel";
 import "./Results.scss";
+import { useSelector } from "react-redux";
 
-const Results = ({
-  searchResults,
-  loadingSearchResultsFlag,
-  onWatchlistAdd,
-  watchlistData,
-}) => {
+const Results = ({ loadingSearchResultsFlag }) => {
+  const searchResults = useSelector((state) => state.searchResults);
+
   return (
     <div>
       {loadingSearchResultsFlag && (
@@ -15,13 +13,7 @@ const Results = ({
           <p>LOADING</p>
         </div>
       )}
-      {!loadingSearchResultsFlag && searchResults.length > 4 && (
-        <Carousel
-          searchResults={searchResults}
-          onWatchlistAdd={onWatchlistAdd}
-          watchlistData={watchlistData}
-        />
-      )}
+      {!loadingSearchResultsFlag && searchResults.length > 4 && <Carousel />}
     </div>
   );
 };

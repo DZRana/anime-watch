@@ -3,8 +3,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Carousel.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUserAnimes } from "../../../../actions";
 
-const Carousel = ({ searchResults, onWatchlistAdd, watchlistData }) => {
+const Carousel = () => {
+  const searchResults = useSelector((state) => state.searchResults);
+  const user = useSelector((state) => state.user);
+  const { watchlistData } = user;
+  const dispatch = useDispatch();
+
   var settings = {
     dots: true,
     arrows: false,
@@ -23,8 +30,8 @@ const Carousel = ({ searchResults, onWatchlistAdd, watchlistData }) => {
           infinite: true,
           speed: 500,
           slidesToShow: 3,
-          slidesToScroll: 3
-        }
+          slidesToScroll: 3,
+        },
       },
       {
         breakpoint: 600,
@@ -35,8 +42,8 @@ const Carousel = ({ searchResults, onWatchlistAdd, watchlistData }) => {
           infinite: true,
           speed: 500,
           slidesToShow: 2,
-          slidesToScroll: 2
-        }
+          slidesToScroll: 2,
+        },
       },
       {
         breakpoint: 480,
@@ -47,10 +54,10 @@ const Carousel = ({ searchResults, onWatchlistAdd, watchlistData }) => {
           infinite: true,
           speed: 500,
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <Slider className="mt-4 carousel" {...settings}>
@@ -86,7 +93,9 @@ const Carousel = ({ searchResults, onWatchlistAdd, watchlistData }) => {
                 ) : (
                   <button
                     className="btn btn-primary"
-                    onClick={() => onWatchlistAdd(searchResults[i])}
+                    onClick={() =>
+                      dispatch(updateUserAnimes(user, searchResults[i]))
+                    }
                   >
                     + Watchlist
                   </button>
