@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { withRouter, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Signin.scss";
 import signin_gif from "./signin-gif.gif";
 import animeWatchApi from "../../apis/anime-watch-api";
+import { fetchUser } from "../../actions";
 
 toast.configure({
   autoClose: 3000,
 });
 
-const Signin = ({ loadUser }) => {
+const Signin = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
@@ -25,7 +28,7 @@ const Signin = ({ loadUser }) => {
         toast.error("Wrong credentials!!!");
       });
     if (response) {
-      loadUser(response.data);
+      dispatch(fetchUser(response.data));
       history.push("/explore");
     }
   };
