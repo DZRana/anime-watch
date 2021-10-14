@@ -20,7 +20,7 @@ const App = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  // HERE
+  // HERE HERE HERE
   const [loadingSearchResultsFlag, setLoadingSearchResultsFlag] =
     useState(false);
 
