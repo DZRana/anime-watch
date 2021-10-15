@@ -1,29 +1,12 @@
 import React from "react";
 import Carousel from "./Carousel/Carousel";
 import "./Results.scss";
+import { useSelector } from "react-redux";
 
-const Results = ({
-  searchResults,
-  loadingSearchResultsFlag,
-  onWatchlistAdd,
-  watchlistData,
-}) => {
-  return (
-    <div>
-      {loadingSearchResultsFlag && (
-        <div className="loading text-center animated flash infinite">
-          <p>LOADING</p>
-        </div>
-      )}
-      {!loadingSearchResultsFlag && searchResults.length > 4 && (
-        <Carousel
-          searchResults={searchResults}
-          onWatchlistAdd={onWatchlistAdd}
-          watchlistData={watchlistData}
-        />
-      )}
-    </div>
-  );
+const Results = () => {
+  const searchResults = useSelector((state) => state.searchResults);
+
+  return <div>{searchResults.length > 0 && <Carousel />}</div>;
 };
 
 export default Results;

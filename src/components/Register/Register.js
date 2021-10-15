@@ -5,12 +5,15 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Register.scss";
 import register_gif from "./register-gif.gif";
 import animeWatchApi from "../../apis/anime-watch-api";
+import { useDispatch } from "react-redux";
+import { fetchUser } from "../../actions";
 
 toast.configure({
   autoClose: 3000,
 });
 
-const Register = ({ loadUser }) => {
+const Register = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -47,7 +50,7 @@ const Register = ({ loadUser }) => {
         toast.error("Invalid entries!!!");
       });
     if (response) {
-      loadUser(response.data);
+      dispatch(fetchUser(response.data));
       history.push("/explore");
     }
   };
