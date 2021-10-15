@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/anime-watch/static/css/main.69bbf47f.chunk.css",
-    "main.js": "/anime-watch/static/js/main.f9ac620e.chunk.js",
-    "main.js.map": "/anime-watch/static/js/main.f9ac620e.chunk.js.map",
+    "main.css": "/anime-watch/static/css/main.97d2728e.chunk.css",
+    "main.js": "/anime-watch/static/js/main.c092b832.chunk.js",
+    "main.js.map": "/anime-watch/static/js/main.c092b832.chunk.js.map",
     "runtime-main.js": "/anime-watch/static/js/runtime-main.02244aaa.js",
     "runtime-main.js.map": "/anime-watch/static/js/runtime-main.02244aaa.js.map",
-    "static/css/2.083d79f4.chunk.css": "/anime-watch/static/css/2.083d79f4.chunk.css",
-    "static/js/2.b3d43951.chunk.js": "/anime-watch/static/js/2.b3d43951.chunk.js",
-    "static/js/2.b3d43951.chunk.js.map": "/anime-watch/static/js/2.b3d43951.chunk.js.map",
+    "static/css/2.146fd943.chunk.css": "/anime-watch/static/css/2.146fd943.chunk.css",
+    "static/js/2.3b111460.chunk.js": "/anime-watch/static/js/2.3b111460.chunk.js",
+    "static/js/2.3b111460.chunk.js.map": "/anime-watch/static/js/2.3b111460.chunk.js.map",
     "index.html": "/anime-watch/index.html",
-    "precache-manifest.7bd5bc6921d4df741336ec92a79d3a84.js": "/anime-watch/precache-manifest.7bd5bc6921d4df741336ec92a79d3a84.js",
+    "precache-manifest.abcba8f4cddeedc12ea0d719a1902a91.js": "/anime-watch/precache-manifest.abcba8f4cddeedc12ea0d719a1902a91.js",
     "service-worker.js": "/anime-watch/service-worker.js",
-    "static/css/2.083d79f4.chunk.css.map": "/anime-watch/static/css/2.083d79f4.chunk.css.map",
-    "static/css/main.69bbf47f.chunk.css.map": "/anime-watch/static/css/main.69bbf47f.chunk.css.map",
-    "static/js/2.b3d43951.chunk.js.LICENSE": "/anime-watch/static/js/2.b3d43951.chunk.js.LICENSE",
+    "static/css/2.146fd943.chunk.css.map": "/anime-watch/static/css/2.146fd943.chunk.css.map",
+    "static/css/main.97d2728e.chunk.css.map": "/anime-watch/static/css/main.97d2728e.chunk.css.map",
+    "static/js/2.3b111460.chunk.js.LICENSE": "/anime-watch/static/js/2.3b111460.chunk.js.LICENSE",
     "static/media/register-gif.gif": "/anime-watch/static/media/register-gif.fba7636e.gif",
     "static/media/signin-gif.gif": "/anime-watch/static/media/signin-gif.8feb230c.gif",
     "static/media/slick-theme.css": "/anime-watch/static/media/slick.f97e3bbf.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.02244aaa.js",
-    "static/css/2.083d79f4.chunk.css",
-    "static/js/2.b3d43951.chunk.js",
-    "static/css/main.69bbf47f.chunk.css",
-    "static/js/main.f9ac620e.chunk.js"
+    "static/css/2.146fd943.chunk.css",
+    "static/js/2.3b111460.chunk.js",
+    "static/css/main.97d2728e.chunk.css",
+    "static/js/main.c092b832.chunk.js"
   ]
 }
