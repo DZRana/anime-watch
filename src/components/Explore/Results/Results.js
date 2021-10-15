@@ -3,19 +3,10 @@ import Carousel from "./Carousel/Carousel";
 import "./Results.scss";
 import { useSelector } from "react-redux";
 
-const Results = ({ loadingSearchResultsFlag }) => {
+const Results = () => {
   const searchResults = useSelector((state) => state.searchResults);
 
-  return (
-    <div>
-      {loadingSearchResultsFlag && (
-        <div className="loading text-center animated flash infinite">
-          <p>LOADING</p>
-        </div>
-      )}
-      {!loadingSearchResultsFlag && searchResults.length > 4 && <Carousel />}
-    </div>
-  );
+  return <div>{searchResults.length > 0 && <Carousel />}</div>;
 };
 
 export default Results;

@@ -20,10 +20,6 @@ const App = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  // HERE HERE HERE
-  const [loadingSearchResultsFlag, setLoadingSearchResultsFlag] =
-    useState(false);
-
   const updateUserWatchlist = async () => {
     const { id, watchlistData } = user;
     await animeWatchApi.put("/watchlist", {
@@ -32,16 +28,10 @@ const App = () => {
     });
   };
 
-  const callAPI = (anime) => {
-    if (anime.length >= 3) {
-      setLoadingSearchResultsFlag(true);
-      dispatch(fetchAnime(anime));
-      setLoadingSearchResultsFlag(false);
-    } else toast.error("Minimum 3 letters required!");
-  };
-
   const onSearchSubmit = (anime) => {
-    callAPI(anime);
+    if (anime.length >= 3) {
+      dispatch(fetchAnime(anime));
+    } else toast.error("Minimum 3 letters required!");
   };
 
   const onDragEnd = (result) => {
@@ -166,10 +156,7 @@ const App = () => {
           return (
             <div className="container-fluid explore">
               <Topnav updateUserWatchlist={updateUserWatchlist} />
-              <Explore
-                onSearchSubmit={onSearchSubmit}
-                loadingSearchResultsFlag={loadingSearchResultsFlag}
-              />
+              <Explore onSearchSubmit={onSearchSubmit} />
             </div>
           );
         }}
