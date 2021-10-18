@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f85cf8837071b678f794ac139bd13d12",
+    "revision": "8b91727a6e368891d01ca779c4e530e0",
     "url": "/anime-watch/index.html"
   },
   {
-    "revision": "f116b2303a9d136c796c",
+    "revision": "1bec833621d9dcef9c80",
     "url": "/anime-watch/static/css/2.146fd943.chunk.css"
   },
   {
-    "revision": "1de07a8ab4f4a55d70c1",
+    "revision": "736ae603fbdf75c173e4",
     "url": "/anime-watch/static/css/main.97d2728e.chunk.css"
   },
   {
-    "revision": "f116b2303a9d136c796c",
-    "url": "/anime-watch/static/js/2.3b111460.chunk.js"
+    "revision": "1bec833621d9dcef9c80",
+    "url": "/anime-watch/static/js/2.51e4789f.chunk.js"
   },
   {
     "revision": "c4433ea3d61511f1f77592fb381a7b0b",
-    "url": "/anime-watch/static/js/2.3b111460.chunk.js.LICENSE"
+    "url": "/anime-watch/static/js/2.51e4789f.chunk.js.LICENSE"
   },
   {
-    "revision": "1de07a8ab4f4a55d70c1",
-    "url": "/anime-watch/static/js/main.c092b832.chunk.js"
+    "revision": "736ae603fbdf75c173e4",
+    "url": "/anime-watch/static/js/main.db5ffbb7.chunk.js"
   },
   {
     "revision": "3aabdb6cc8fb40c4e72d",
