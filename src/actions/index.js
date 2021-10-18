@@ -21,6 +21,38 @@ export const fetchUser = (data) => {
   };
 };
 
+export const fetchGuestUser = () => {
+  return {
+    type: "FETCH_GUEST_USER",
+    payload: {
+      id: "",
+      name: "",
+      email: "",
+      joined: "",
+      watchlistData: {
+        animes: {},
+        columns: {
+          c1: {
+            id: "c1",
+            title: "Currently Watching",
+            animeIds: [],
+          },
+          c2: {
+            id: "c2",
+            title: "Finished Watching",
+            animeIds: [],
+          },
+          c3: {
+            id: "c3",
+            title: "Remove from Watchlist",
+          },
+        },
+        columnOrder: ["c1", "c2", "c3"],
+      },
+    },
+  };
+};
+
 export const updateUserAnimes = (user, animeInfo) => {
   const { watchlistData } = user;
   const { animes, columns } = user.watchlistData;

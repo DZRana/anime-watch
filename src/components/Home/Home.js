@@ -5,9 +5,13 @@ import signin_icon from "./signin-icon.png";
 import register_icon from "./register-icon.png";
 
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchGuestUser } from "../../actions";
 
 const Home = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   return (
     <div className="container-fluid home">
       <div className="d-flex justify-content-center align-items-center h-100">
@@ -44,6 +48,21 @@ const Home = () => {
                 </button>
                 <div className="overlay-img">
                   <img alt="register-icon" src={register_icon} />
+                </div>
+              </div>
+              <div className="row justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-outline-light btn-block"
+                  onClick={() => {
+                    dispatch(fetchGuestUser());
+                    history.push("/explore");
+                  }}
+                >
+                  Guest
+                </button>
+                <div className="overlay-img">
+                  <img alt="signin-icon" src={signin_icon} />
                 </div>
               </div>
             </div>
