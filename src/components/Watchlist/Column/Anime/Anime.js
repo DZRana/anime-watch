@@ -1,5 +1,5 @@
 import React from "react";
-import "./Anime.scss";
+import "./Anime.css";
 import { Draggable } from "react-beautiful-dnd";
 
 const Anime = ({ anime, index, column }) => {
@@ -18,7 +18,7 @@ const Anime = ({ anime, index, column }) => {
                 : "transparent" && snapshot.isDragging && column.id === "c2"
                 ? "gold"
                 : "transparent",
-            ...provided.draggableProps.style
+            ...provided.draggableProps.style,
           }}
         >
           {anime.content}

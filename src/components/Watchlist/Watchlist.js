@@ -1,6 +1,6 @@
 import React from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import "./Watchlist.scss";
+import "./Watchlist.css";
 import Column from "./Column/Column";
 import { useSelector } from "react-redux";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.scss";
+import "./Home.css";
 import ninja from "./ninja.png";
 import signin_icon from "./signin-icon.png";
 import register_icon from "./register-icon.png";

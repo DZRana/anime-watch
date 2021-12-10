@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import { toast } from "react-toastify";
-import "./App.scss";
+import "./App.css";
 import Topnav from "../components/Topnav/Topnav";
 import Home from "../components/Home/Home";
 import Signin from "../components/Signin/Signin";

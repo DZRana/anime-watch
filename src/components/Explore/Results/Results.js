@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "./Carousel/Carousel";
-import "./Results.scss";
+import "./Results.css";
 import { useSelector } from "react-redux";
 
 const Results = () => {

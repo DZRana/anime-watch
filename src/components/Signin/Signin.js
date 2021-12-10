@@ -3,7 +3,7 @@ import { withRouter, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Signin.scss";
+import "./Signin.css";
 import signin_gif from "./signin-gif.gif";
 import animeWatchApi from "../../apis/anime-watch-api";
 import { fetchUser } from "../../actions";
