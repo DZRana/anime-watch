@@ -39,58 +39,52 @@ const Signin = () => {
   };
 
   return (
-    <div className="flex h-screen animated fadeInRight slow">
-      <div
-        className="m-auto rounded-lg shadow-2xl w-5/6 bg-cover bg-center h-4/5"
-        style={{
-          backgroundImage: `url(${signin_gif})`,
-        }}
-      >
-        <div className="h-full flex flex-col text-center font-bold">
-          <div className="m-auto w-full">
-            <label className="text-white" htmlFor="email">
-              Email
-            </label>
-            <form onSubmit={onFormSubmit}>
-              <input
-                type="email"
-                className="rounded bg-gray-300 w-1/2"
-                id="email"
-                aria-describedby="emailHelp"
-                placeholder="email@site.com"
-                value={signInEmail}
-                onChange={(event) => setSignInEmail(event.target.value)}
-              />
-            </form>
-            <label className="text-white" htmlFor="password">
-              Password
-            </label>
-            <form onSubmit={onFormSubmit}>
-              <input
-                type="password"
-                className="rounded bg-gray-300 w-1/2"
-                id="password"
-                placeholder="Password"
-                value={signInPassword}
-                onChange={(event) => setSignInPassword(event.target.value)}
-              />
-            </form>
-          </div>
-          <div className="flex flex-col gap-1 w-1/2 m-auto">
-            <button
-              type="submit"
-              className="transition-colors font-bold text-white hover:bg-white hover:text-gray-700 py-2 px-4 border border-white rounded-full w-full"
-              onClick={callSigninEndpoint}
-            >
-              Submit
-            </button>
-            <button
-              className="transition-colors font-bold bg-red-900 text-red-500 hover:bg-red-500 hover:text-white py-2 px-4 border border-red-500 rounded-full w-full"
-              onClick={() => history.push("/")}
-            >
-              Back
-            </button>
-          </div>
+    <div className="flex h-screen animated fadeInRight slow font-bold">
+      <div className="m-auto text-center space-y-8 w-3/4 rounded-lg shadow-lg">
+        <div className="flex flex-col">
+          <img className="rounded-tl-lg rounded-tr-lg" src={`${signin_gif}`} />
+          <label className="text-white pt-5" htmlFor="email">
+            Email
+          </label>
+          <form onSubmit={onFormSubmit}>
+            <input
+              type="email"
+              className="rounded bg-gray-300 w-1/2"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="email@site.com"
+              value={signInEmail}
+              onChange={(event) => setSignInEmail(event.target.value)}
+            />
+          </form>
+          <label className="text-white" htmlFor="password">
+            Password
+          </label>
+          <form onSubmit={onFormSubmit}>
+            <input
+              type="password"
+              className="rounded bg-gray-300 w-1/2"
+              id="password"
+              placeholder="Password"
+              value={signInPassword}
+              onChange={(event) => setSignInPassword(event.target.value)}
+            />
+          </form>
+        </div>
+        <div className="flex flex-col space-y-1 pb-5">
+          <button
+            type="submit"
+            className="m-auto font-bold transition-colors text-white hover:bg-white hover:text-gray-700 py-2 px-4 border border-white rounded-full w-1/2"
+            onClick={callSigninEndpoint}
+          >
+            Submit
+          </button>
+          <button
+            className="m-auto font-bold transition-colors  bg-red-900 text-red-500 hover:bg-red-500 hover:text-white py-2 px-4 border border-red-500 rounded-full w-1/2"
+            onClick={() => history.push("/")}
+          >
+            Back
+          </button>
         </div>
       </div>
     </div>
