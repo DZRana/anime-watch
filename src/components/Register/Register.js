@@ -62,12 +62,14 @@ const Register = () => {
 
   return (
     <div className="flex h-screen animated fadeInRight slow font-bold">
-      <div className="m-auto text-center space-y-8 w-3/4 rounded-lg shadow-lg">
+      <div className="m-auto text-center space-y-8 w-3/4 sm:max-w-md rounded-lg shadow-lg">
         <div className="flex flex-col">
-          <img
-            className="rounded-tl-lg rounded-tr-lg"
-            src={`${register_gif}`}
-          />
+          <div>
+            <img
+              className="m-auto rounded-tl-lg rounded-tr-lg sm:w-1/2 sm:h-16 lg:w-auto lg:h-auto"
+              src={`${register_gif}`}
+            />
+          </div>
           <label className="text-white pt-5" htmlFor="name">
             Name
           </label>

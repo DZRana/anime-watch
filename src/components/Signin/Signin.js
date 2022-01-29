@@ -40,10 +40,15 @@ const Signin = () => {
 
   return (
     <div className="flex h-screen animated fadeInRight slow font-bold">
-      <div className="m-auto text-center space-y-8 w-3/4 rounded-lg shadow-lg">
+      <div className="m-auto text-center space-y-8 w-3/4 sm:max-w-md rounded-lg shadow-lg">
+        <div>
+          <img
+            className="m-auto rounded-tl-lg rounded-tr-lg sm:w-1/2 sm:h-24 lg:w-auto lg:h-auto"
+            src={`${signin_gif}`}
+          />
+        </div>
         <div className="flex flex-col">
-          <img className="rounded-tl-lg rounded-tr-lg" src={`${signin_gif}`} />
-          <label className="text-white pt-5" htmlFor="email">
+          <label className="text-white" htmlFor="email">
             Email
           </label>
           <form onSubmit={onFormSubmit}>
