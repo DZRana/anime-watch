@@ -61,7 +61,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex h-screen animated fadeInRight slow font-bold">
+    <div className="flex h-screen animated fadeInRight slow font-bold overflow-hidden">
       <div className="m-auto text-center space-y-8 w-3/4 sm:max-w-md rounded-lg shadow-lg">
         <div className="flex flex-col">
           <div>

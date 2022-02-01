@@ -69,11 +69,11 @@ const Carousel = () => {
           >
             <img
               src={searchResults[i].image_url}
-              className="card-img-top"
+              className="card-img-top w-full"
               alt={`${searchResults[i].title}-thumbnail`}
             />
-            <div className="card-body text-center d-flex flex-column justify-content-around">
-              <h5 className="card-title">
+            <div className="card-body text-center text-white flex flex-col mt-4 space-y-4">
+              <h5 className="hover:transition-opacity hover:opacity-70 duration-1000 font-bold">
                 <a
                   href={searchResults[i].url}
                   target="_blank"
@@ -82,17 +82,17 @@ const Carousel = () => {
                   {searchResults[i].title}
                 </a>
               </h5>
-              <p className="card-text d-none d-xl-block">
-                {searchResults[i].synopsis}
-              </p>
+              <p className="custombp:hidden">{searchResults[i].synopsis}</p>
               <div>
                 {Object.keys(watchlistData.animes).includes(
                   searchResults[i].mal_id.toString()
                 ) ? (
-                  <p className="animated fadeIn">Added to Watchlist</p>
+                  <p className="animated fadeIn font-bold text-green-300">
+                    Added to Watchlist
+                  </p>
                 ) : (
                   <button
-                    className="btn btn-primary"
+                    className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
                     onClick={() =>
                       dispatch(updateUserAnimes(user, searchResults[i]))
                     }

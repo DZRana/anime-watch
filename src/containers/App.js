@@ -154,7 +154,7 @@ const App = () => {
         path="/explore"
         render={() => {
           return (
-            <div className="container-fluid explore">
+            <div className="h-screen">
               <Topnav updateUserWatchlist={updateUserWatchlist} />
               <Explore onSearchSubmit={onSearchSubmit} />
             </div>
@@ -165,7 +165,7 @@ const App = () => {
         path="/watchlist"
         render={() => {
           return (
-            <div className="container-fluid">
+            <div className="">
               <Topnav updateUserWatchlist={updateUserWatchlist} />
               <div className="animated fadeIn slow">
                 <Watchlist onDragEnd={onDragEnd} />
