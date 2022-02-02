@@ -1,5 +1,4 @@
 import React from "react";
-import "./Explore.css";
 import Searchbar from "./Searchbar/Searchbar";
 import Results from "./Results/Results";
 

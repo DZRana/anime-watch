@@ -5,7 +5,7 @@ import { Droppable } from "react-beautiful-dnd";
 
 const Column = ({ column, animes }) => {
   return (
-    <div className="colContainer col d-flex flex-column ">
+    <div className="colContainer flex flex-col">
       <h3 className="colTitle">{column.title}</h3>
       <Droppable droppableId={column.id}>
         {(provided, snapshot) => (

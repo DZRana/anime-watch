@@ -1,9 +1,0 @@
-.container-fluid {
-  height: 100vh;
-}
-
-.explore {
-  @media (min-width: 1200px) {
-    overflow: hidden;
-  }
-}

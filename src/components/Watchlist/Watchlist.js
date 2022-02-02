@@ -1,6 +1,5 @@
 import React from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import "./Watchlist.css";
 import Column from "./Column/Column";
 import { useSelector } from "react-redux";
 
@@ -9,7 +8,7 @@ const Watchlist = ({ onDragEnd }) => {
   const { watchlistData } = user;
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="mt-5 row">
+      <div className="grid grid-cols-2 text-lg md:text-2xl text-white font-bold mt-4">
         {watchlistData.columnOrder.map((columnId) => {
           const column = watchlistData.columns[columnId];
           if (columnId !== "c3") {
@@ -20,7 +19,7 @@ const Watchlist = ({ onDragEnd }) => {
           }
         })}
       </div>
-      <div className="row">
+      <div className="text-lg md:text-2xl text-white font-bold">
         <Column key={"c3"} column={watchlistData.columns["c3"]} />
       </div>
     </DragDropContext>

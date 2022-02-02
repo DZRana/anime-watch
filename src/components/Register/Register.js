@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { withRouter, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Register.css";
 import register_gif from "./register-gif.gif";
 import animeWatchApi from "../../apis/anime-watch-api";
 import { useDispatch } from "react-redux";

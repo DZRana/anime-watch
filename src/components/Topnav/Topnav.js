@@ -1,5 +1,4 @@
 import React from "react";
-import "./Topnav.css";
 import { Link, withRouter } from "react-router-dom";
 
 const Topnav = ({ updateUserWatchlist }) => {
