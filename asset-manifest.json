@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.5d686c27.chunk.css",
-    "main.js": "/static/js/main.6b826969.chunk.js",
-    "main.js.map": "/static/js/main.6b826969.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.b76b437a.js",
-    "runtime-main.js.map": "/static/js/runtime-main.b76b437a.js.map",
-    "static/css/2.2c80bd19.chunk.css": "/static/css/2.2c80bd19.chunk.css",
-    "static/js/2.d0607db1.chunk.js": "/static/js/2.d0607db1.chunk.js",
-    "static/js/2.d0607db1.chunk.js.map": "/static/js/2.d0607db1.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.2c80bd19.chunk.css.map": "/static/css/2.2c80bd19.chunk.css.map",
-    "static/css/main.5d686c27.chunk.css.map": "/static/css/main.5d686c27.chunk.css.map",
-    "static/js/2.d0607db1.chunk.js.LICENSE.txt": "/static/js/2.d0607db1.chunk.js.LICENSE.txt",
-    "static/media/register-gif.1b47b9dd.gif": "/static/media/register-gif.1b47b9dd.gif",
-    "static/media/signin-gif.05a56818.gif": "/static/media/signin-gif.05a56818.gif",
-    "static/media/slick-theme.css": "/static/media/slick.c94f7671.ttf"
+    "main.css": "/anime-watch/static/css/main.5d686c27.chunk.css",
+    "main.js": "/anime-watch/static/js/main.00a9199f.chunk.js",
+    "main.js.map": "/anime-watch/static/js/main.00a9199f.chunk.js.map",
+    "runtime-main.js": "/anime-watch/static/js/runtime-main.062c640a.js",
+    "runtime-main.js.map": "/anime-watch/static/js/runtime-main.062c640a.js.map",
+    "static/css/2.5e88e27f.chunk.css": "/anime-watch/static/css/2.5e88e27f.chunk.css",
+    "static/js/2.d0607db1.chunk.js": "/anime-watch/static/js/2.d0607db1.chunk.js",
+    "static/js/2.d0607db1.chunk.js.map": "/anime-watch/static/js/2.d0607db1.chunk.js.map",
+    "index.html": "/anime-watch/index.html",
+    "static/css/2.5e88e27f.chunk.css.map": "/anime-watch/static/css/2.5e88e27f.chunk.css.map",
+    "static/css/main.5d686c27.chunk.css.map": "/anime-watch/static/css/main.5d686c27.chunk.css.map",
+    "static/js/2.d0607db1.chunk.js.LICENSE.txt": "/anime-watch/static/js/2.d0607db1.chunk.js.LICENSE.txt",
+    "static/media/register-gif.1b47b9dd.gif": "/anime-watch/static/media/register-gif.1b47b9dd.gif",
+    "static/media/signin-gif.05a56818.gif": "/anime-watch/static/media/signin-gif.05a56818.gif",
+    "static/media/slick-theme.css": "/anime-watch/static/media/slick.c94f7671.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.b76b437a.js",
-    "static/css/2.2c80bd19.chunk.css",
+    "static/js/runtime-main.062c640a.js",
+    "static/css/2.5e88e27f.chunk.css",
     "static/js/2.d0607db1.chunk.js",
     "static/css/main.5d686c27.chunk.css",
-    "static/js/main.6b826969.chunk.js"
+    "static/js/main.00a9199f.chunk.js"
   ]
 }
