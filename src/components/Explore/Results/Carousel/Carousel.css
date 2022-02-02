@@ -1,0 +1,18 @@
+.card {
+  background: transparent;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.22);
+}
+
+.card-img-top {
+  height: 40vh;
+}
+.card-body {
+  height: 35vh;
+}
+
+.slick-slide {
+  transition: all 0.3s ease-in-out;
+}
+.slick-slide:hover {
+  transform: scale(0.97);
+}

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { withRouter, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Register.scss";
 import register_gif from "./register-gif.gif";
 import animeWatchApi from "../../apis/anime-watch-api";
 import { useDispatch } from "react-redux";
@@ -61,75 +60,70 @@ const Register = () => {
   };
 
   return (
-    <div className="container-fluid register">
-      <div className="d-flex justify-content-center align-items-center h-100">
-        <div className="card animated fadeInRight slow">
-          <img className="card-img-top" alt="register-gif" src={register_gif} />
-          <div className="card-body">
-            <article className="text-center">
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <form onSubmit={onFormSubmit}>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="name"
-                    placeholder="Full Name"
-                    value={registerName}
-                    onChange={(event) => setRegisterName(event.target.value)}
-                  />
-                </form>
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <form onSubmit={onFormSubmit}>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    aria-describedby="emailHelp"
-                    placeholder="email@site.com"
-                    value={registerEmail}
-                    onChange={(event) => setRegisterEmail(event.target.value)}
-                  />
-                </form>
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <form onSubmit={onFormSubmit}>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    placeholder="Password"
-                    value={registerPassword}
-                    onChange={(event) =>
-                      setRegisterPassword(event.target.value)
-                    }
-                  />
-                </form>
-              </div>
-              <div className="col">
-                <div className="row justify-content-center">
-                  <button
-                    type="submit"
-                    className="btn btn-outline-light btn-block"
-                    onClick={callRegisterEndpoint}
-                  >
-                    Submit
-                  </button>
-                </div>
-                <div className="mt-1 row justify-content-center">
-                  <button
-                    className="btn btn-outline-danger btn-block"
-                    onClick={() => history.push("/")}
-                  >
-                    Back
-                  </button>
-                </div>
-              </div>
-            </article>
+    <div className="flex h-screen animated fadeInRight slow font-bold overflow-hidden">
+      <div className="m-auto text-center space-y-8 w-3/4 sm:max-w-md rounded-lg shadow-lg">
+        <div className="flex flex-col">
+          <div>
+            <img
+              className="m-auto rounded-tl-lg rounded-tr-lg sm:w-1/2 sm:h-16 lg:w-auto lg:h-auto"
+              src={`${register_gif}`}
+            />
           </div>
+          <label className="text-white pt-5" htmlFor="name">
+            Name
+          </label>
+          <form onSubmit={onFormSubmit}>
+            <input
+              type="text"
+              className="rounded bg-gray-300 w-1/2"
+              id="name"
+              placeholder="Full Name"
+              value={registerName}
+              onChange={(event) => setRegisterName(event.target.value)}
+            />
+          </form>
+          <label className="text-white" htmlFor="email">
+            Email
+          </label>
+          <form onSubmit={onFormSubmit}>
+            <input
+              type="email"
+              className="rounded bg-gray-300 w-1/2"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="email@site.com"
+              value={registerEmail}
+              onChange={(event) => setRegisterEmail(event.target.value)}
+            />
+          </form>
+          <label className="text-white" htmlFor="password">
+            Password
+          </label>
+          <form onSubmit={onFormSubmit}>
+            <input
+              type="password"
+              className="rounded bg-gray-300 w-1/2"
+              id="password"
+              placeholder="Password"
+              value={registerPassword}
+              onChange={(event) => setRegisterPassword(event.target.value)}
+            />
+          </form>
+        </div>
+        <div className="flex flex-col space-y-1 pb-5">
+          <button
+            type="submit"
+            className="m-auto font-bold transition-colors text-white hover:bg-white hover:text-gray-700 py-2 px-4 border border-white rounded-full w-1/2"
+            onClick={callRegisterEndpoint}
+          >
+            Submit
+          </button>
+          <button
+            className="m-auto font-bold transition-colors bg-red-900 text-red-500 hover:bg-red-500 hover:text-white py-2 px-4 border border-red-500 rounded-full w-1/2"
+            onClick={() => history.push("/")}
+          >
+            Back
+          </button>
         </div>
       </div>
     </div>

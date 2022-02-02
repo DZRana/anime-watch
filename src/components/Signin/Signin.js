@@ -3,7 +3,6 @@ import { withRouter, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Signin.scss";
 import signin_gif from "./signin-gif.gif";
 import animeWatchApi from "../../apis/anime-watch-api";
 import { fetchUser } from "../../actions";
@@ -39,61 +38,57 @@ const Signin = () => {
   };
 
   return (
-    <div className="container-fluid signin">
-      <div className="d-flex justify-content-center align-items-center h-100">
-        <div className="card animated fadeInRight slow">
-          <img className="card-img-top" alt="signin-gif" src={signin_gif} />
-          <div className="card-body">
-            <article className="text-center">
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <form onSubmit={onFormSubmit}>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    aria-describedby="emailHelp"
-                    placeholder="email@site.com"
-                    value={signInEmail}
-                    onChange={(event) => setSignInEmail(event.target.value)}
-                  />
-                </form>
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <form onSubmit={onFormSubmit}>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    placeholder="Password"
-                    value={signInPassword}
-                    onChange={(event) => setSignInPassword(event.target.value)}
-                  />
-                </form>
-              </div>
-
-              <div className="col">
-                <div className="row justify-content-center">
-                  <button
-                    type="submit"
-                    className="btn btn-outline-light btn-block"
-                    onClick={callSigninEndpoint}
-                  >
-                    Submit
-                  </button>
-                </div>
-                <div className="mt-1 row justify-content-center">
-                  <button
-                    className="btn btn-outline-danger btn-block"
-                    onClick={() => history.push("/")}
-                  >
-                    Back
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
+    <div className="flex h-screen animated fadeInRight slow font-bold overflow-hidden">
+      <div className="m-auto text-center space-y-8 w-3/4 sm:max-w-md rounded-lg shadow-lg">
+        <div>
+          <img
+            className="m-auto rounded-tl-lg rounded-tr-lg sm:w-1/2 sm:h-24 lg:w-auto lg:h-auto"
+            src={`${signin_gif}`}
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-white" htmlFor="email">
+            Email
+          </label>
+          <form onSubmit={onFormSubmit}>
+            <input
+              type="email"
+              className="rounded bg-gray-300 w-1/2"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="email@site.com"
+              value={signInEmail}
+              onChange={(event) => setSignInEmail(event.target.value)}
+            />
+          </form>
+          <label className="text-white" htmlFor="password">
+            Password
+          </label>
+          <form onSubmit={onFormSubmit}>
+            <input
+              type="password"
+              className="rounded bg-gray-300 w-1/2"
+              id="password"
+              placeholder="Password"
+              value={signInPassword}
+              onChange={(event) => setSignInPassword(event.target.value)}
+            />
+          </form>
+        </div>
+        <div className="flex flex-col space-y-1 pb-5">
+          <button
+            type="submit"
+            className="m-auto font-bold transition-colors text-white hover:bg-white hover:text-gray-700 py-2 px-4 border border-white rounded-full w-1/2"
+            onClick={callSigninEndpoint}
+          >
+            Submit
+          </button>
+          <button
+            className="m-auto font-bold transition-colors  bg-red-900 text-red-500 hover:bg-red-500 hover:text-white py-2 px-4 border border-red-500 rounded-full w-1/2"
+            onClick={() => history.push("/")}
+          >
+            Back
+          </button>
         </div>
       </div>
     </div>

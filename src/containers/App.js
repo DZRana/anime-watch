@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import { toast } from "react-toastify";
-import "./App.scss";
 import Topnav from "../components/Topnav/Topnav";
 import Home from "../components/Home/Home";
 import Signin from "../components/Signin/Signin";
@@ -154,7 +153,7 @@ const App = () => {
         path="/explore"
         render={() => {
           return (
-            <div className="container-fluid explore">
+            <div className="h-screen">
               <Topnav updateUserWatchlist={updateUserWatchlist} />
               <Explore onSearchSubmit={onSearchSubmit} />
             </div>
@@ -165,7 +164,7 @@ const App = () => {
         path="/watchlist"
         render={() => {
           return (
-            <div className="container-fluid">
+            <div className="">
               <Topnav updateUserWatchlist={updateUserWatchlist} />
               <div className="animated fadeIn slow">
                 <Watchlist onDragEnd={onDragEnd} />
